@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --violet: #6d28d9;
+  --violet-deep: #4c1d95;
+  --violet-soft: #f5f3ff;
+  --yellow: #facc15;
+  --yellow-hover: #eab308;
+  --dark: #1e1b4b;
+  --white: #ffffff;
+  --gray: #64748b;
+}
+
+body {
+  background-color: var(--violet-soft);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* Bright Golden Yellow Primary CTA Button */
+.btn-green {
+  background: var(--yellow);
+  color: var(--dark);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(250, 204, 21, 0.4);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-green:hover {
+  background: var(--yellow-hover);
+  transform: translateY(-2px);
+}
+
+/* Violet Outline Button */
+.btn-outline {
+  background: transparent;
+  color: var(--violet);
+  border: 2px solid var(--violet);
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-outline:hover {
+  background: var(--violet);
+  color: var(--white);
+}
+
+/* Clean Bright Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 8%;
+  background: var(--white);
+  color: var(--dark);
+  position: relative;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(109, 40, 217, 0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  cursor: pointer;
+  color: var(--dark);
+}
+
+.logo span {
+  color: var(--violet);
+}
+
+.swap-badge {
+  background: var(--violet);
+  color: var(--yellow);
+  padding: 4px 9px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+.logo:hover .swap-badge {
+  transform: rotate(180deg);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: #475569;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--violet);
+}
+
+/* Clean Certificate Printing (hides Navbar, Footer & buttons when saving PDF) */
+@media print {
+  .navbar, footer, button {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+}
+/* ===== FALLING KNOWLEDGE RAIN + SKILLSWAP LETTER DROP LOADER ===== */
+.rain-loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 27, 75, 0.88);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+  overflow: hidden;
+  animation: fadeOutRain 0.35s ease 0.85s forwards;
+}
+
+.rain-item {
+  position: absolute;
+  top: -60px;
+  font-size: 2rem;
+  filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.75));
+  animation: emojiFall 1.05s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.word-drop-container {
+  display: flex;
+  gap: 4px;
+  position: relative;
+  z-index: 2;
+}
+
+.drop-letter {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--white);
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(-70px) scale(0.7);
+  animation: letterDropBounce 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.drop-letter.gold {
+  color: var(--yellow);
+}
+
+@keyframes emojiFall {
+  0% {
+    transform: translateY(-40px) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(260deg) scale(1.1);
+    opacity: 0.2;
+  }
+}
+
+@keyframes letterDropBounce {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeOutRain {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
