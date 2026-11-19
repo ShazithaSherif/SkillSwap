@@ -149,7 +149,7 @@ function AboutCreator({ setCurrentPage }) {
               display: "inline-block"
             }}
           >
-            📍 Coimbatore, Tamil Nadu • MCA @ PSGCAS
+            📍 Salem, Tamil Nadu 
           </span>
 
           <h1 style={{ fontSize: "2.6rem", margin: "12px 0 6px", lineHeight: "1.15" }}>
