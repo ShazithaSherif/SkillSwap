@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Navbar({ currentPage, setCurrentPage }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleNav = (page) => {
+    setMenuOpen(false);
+    setCurrentPage(page);
+  };
+
   const goToHowItWorks = () => {
+    setMenuOpen(false);
     setCurrentPage('home');
     setTimeout(() => {
       const section = document.getElementById('how-it-works');
@@ -11,27 +19,38 @@ function Navbar({ currentPage, setCurrentPage }) {
 
   return (
     <nav className="navbar">
-      {/* Custom SkillSwap Logo (logo.jpg from public folder) */}
-      <div className="logo" onClick={() => setCurrentPage('home')}>
-        <img
-          src="/logo.jpg"
-          alt="SkillSwap Logo"
-          style={{
-            width: '44px',
-            height: '44px',
-            borderRadius: '10px',
-            objectFit: 'cover',
-            border: '2px solid #facc15'
-          }}
-        />
-        Skill<span>Swap</span>
+      <div className="nav-top-row">
+        {/* Custom SkillSwap Logo */}
+        <div className="logo" onClick={() => handleNav('home')}>
+          <img
+            src="/logo.jpg"
+            alt="SkillSwap Logo"
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '10px',
+              objectFit: 'cover',
+              border: '2px solid #facc15'
+            }}
+          />
+          Skill<span>Swap</span>
+        </div>
+
+        {/* Mobile Hamburger Button (Hidden on Laptop, Shown on Phone) */}
+        <button
+          className="mobile-menu-btn"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle Menu"
+        >
+          {menuOpen ? '✕' : '☰'}
+        </button>
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="nav-links">
+      {/* Navigation Links */}
+      <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
         <button
           className={`nav-link ${currentPage === 'match' ? 'active' : ''}`}
-          onClick={() => setCurrentPage('match')}
+          onClick={() => handleNav('match')}
         >
           Find a Swap
         </button>
@@ -42,21 +61,21 @@ function Navbar({ currentPage, setCurrentPage }) {
 
         <button
           className={`nav-link ${currentPage === 'dashboard' ? 'active' : ''}`}
-          onClick={() => setCurrentPage('dashboard')}
+          onClick={() => handleNav('dashboard')}
         >
           My Swaps
         </button>
 
         <button
           className={`nav-link ${currentPage === 'about' ? 'active' : ''}`}
-          onClick={() => setCurrentPage('about')}
+          onClick={() => handleNav('about')}
         >
           Creator
         </button>
 
         <button
           className="btn-green"
-          onClick={() => setCurrentPage('profile')}
+          onClick={() => handleNav('profile')}
         >
           Join Free
         </button>

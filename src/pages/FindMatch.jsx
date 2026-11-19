@@ -10,12 +10,10 @@ function FindMatch({ userProfile, onStartSwap }) {
   const [selectedSkill, setSelectedSkill] = useState("");
   const [onlyPerfect, setOnlyPerfect] = useState(false);
 
-  // Combines preset skills + user's custom typed skills into the dropdown list
   const skillFilters = Array.from(
     new Set(["Python", "React", "Design", "DSA", "Photography", "Guitar", "English", myTeach, myLearn])
   );
 
-  // Case-insensitive matching so "python" and "Python" match smoothly
   const getMatchBadge = (peer) => {
     const theyTeachWhatIWant = peer.teaches.toLowerCase() === myLearn.toLowerCase();
     const theyWantWhatITeach = peer.wantsToLearn.toLowerCase() === myTeach.toLowerCase();
@@ -58,7 +56,7 @@ function FindMatch({ userProfile, onStartSwap }) {
   };
 
   return (
-    <div style={{ padding: "50px 8%" }}>
+    <div style={{ padding: "28px 5%" }}>
       {/* Connecting Modal */}
       {connectingPeer && (
         <div style={modalOverlay}>
@@ -78,38 +76,37 @@ function FindMatch({ userProfile, onStartSwap }) {
       )}
 
       {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <h2 style={{ fontSize: "2.2rem", marginBottom: "8px", color: "#1e1b4b" }}>Find Your SkillSwap Match</h2>
-        <p style={{ color: "#64748b", fontSize: "1.05rem" }}>
+      <div style={{ textAlign: "center", marginBottom: "24px" }}>
+        <h2 style={{ fontSize: "1.9rem", marginBottom: "8px", color: "#1e1b4b" }}>Find Your SkillSwap Match</h2>
+        <p style={{ color: "#64748b", fontSize: "0.98rem" }}>
           Your Profile: Teaching <strong style={{ color: "#6d28d9" }}>{myTeach}</strong> | Learning <strong style={{ color: "#1e1b4b" }}>{myLearn}</strong>
         </p>
       </div>
 
       {/* Interactive Search + Dropdown/Type Skill Filter */}
-      <div style={{ background: "#fff", padding: "20px", borderRadius: "18px", boxShadow: "0 6px 20px rgba(109, 40, 217, 0.07)", marginBottom: "32px" }}>
+      <div style={{ background: "#fff", padding: "18px", borderRadius: "18px", boxShadow: "0 6px 20px rgba(109, 40, 217, 0.07)", marginBottom: "24px" }}>
         <datalist id="filter-skill-options">
           {skillFilters.map((skill) => (
             <option key={skill} value={skill} />
           ))}
         </datalist>
 
-        <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "16px" }}>
+        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "14px" }}>
           <input
             type="text"
             placeholder="🔍 Search by peer name or bio..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            style={{ flex: 1, minWidth: "210px", padding: "12px 16px", borderRadius: "10px", border: "1.5px solid #ddd6fe", fontSize: "0.95rem", outline: "none" }}
+            style={{ flex: 1, minWidth: "200px", padding: "11px 14px", borderRadius: "10px", border: "1.5px solid #ddd6fe", fontSize: "0.92rem", outline: "none" }}
           />
 
-          {/* Dropdown + Type Any Skill Input */}
           <input
             type="text"
             list="filter-skill-options"
             placeholder="🎯 Select or type any skill..."
             value={selectedSkill}
             onChange={(e) => setSelectedSkill(e.target.value)}
-            style={{ flex: 1, minWidth: "210px", padding: "12px 16px", borderRadius: "10px", border: "1.5px solid #ddd6fe", fontSize: "0.95rem", outline: "none" }}
+            style={{ flex: 1, minWidth: "200px", padding: "11px 14px", borderRadius: "10px", border: "1.5px solid #ddd6fe", fontSize: "0.92rem", outline: "none" }}
           />
 
           <button
@@ -118,9 +115,10 @@ function FindMatch({ userProfile, onStartSwap }) {
               background: onlyPerfect ? "#facc15" : "#f5f3ff",
               color: onlyPerfect ? "#1e1b4b" : "#6d28d9",
               border: "2px solid #facc15",
-              padding: "10px 18px",
+              padding: "9px 16px",
               borderRadius: "10px",
               fontWeight: "800",
+              fontSize: "0.88rem",
               cursor: "pointer"
             }}
           >
@@ -136,10 +134,10 @@ function FindMatch({ userProfile, onStartSwap }) {
               background: selectedSkill === "" ? "#6d28d9" : "#f5f3ff",
               color: selectedSkill === "" ? "#fff" : "#6d28d9",
               border: "none",
-              padding: "7px 14px",
+              padding: "6px 13px",
               borderRadius: "20px",
               fontWeight: "700",
-              fontSize: "0.85rem",
+              fontSize: "0.82rem",
               cursor: "pointer"
             }}
           >
@@ -153,10 +151,10 @@ function FindMatch({ userProfile, onStartSwap }) {
                 background: selectedSkill.toLowerCase() === skill.toLowerCase() ? "#6d28d9" : "#f5f3ff",
                 color: selectedSkill.toLowerCase() === skill.toLowerCase() ? "#fff" : "#6d28d9",
                 border: "none",
-                padding: "7px 14px",
+                padding: "6px 13px",
                 borderRadius: "20px",
                 fontWeight: "700",
-                fontSize: "0.85rem",
+                fontSize: "0.82rem",
                 cursor: "pointer"
               }}
             >
@@ -168,7 +166,7 @@ function FindMatch({ userProfile, onStartSwap }) {
 
       {/* Filtered Results Grid */}
       {filteredUsers.length === 0 ? (
-        <div style={{ textAlign: "center", padding: "40px", background: "#fff", borderRadius: "16px" }}>
+        <div style={{ textAlign: "center", padding: "36px", background: "#fff", borderRadius: "16px" }}>
           <h3>No matching swappers found 😅</h3>
           <p style={{ color: "#64748b", margin: "8px 0 16px" }}>Try clearing your search or selecting "All" skills.</p>
           <button className="btn-green" onClick={() => { setSearchQuery(""); setSelectedSkill(""); setOnlyPerfect(false); }}>
@@ -176,40 +174,40 @@ function FindMatch({ userProfile, onStartSwap }) {
           </button>
         </div>
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))", gap: "24px" }}>
+        <div className="match-grid-mobile" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))", gap: "24px" }}>
           {filteredUsers.map((user) => {
             const match = getMatchBadge(user);
             return (
-              <div key={user.id} style={cardStyle}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
-                  <span style={{ background: match.bg, color: match.color, padding: "4px 12px", borderRadius: "12px", fontSize: "0.8rem", fontWeight: "800" }}>
+              <div key={user.id} className="match-card-mobile" style={cardStyle}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "4px", flexWrap: "wrap", marginBottom: "10px" }}>
+                  <span style={{ background: match.bg, color: match.color, padding: "3px 8px", borderRadius: "10px", fontSize: "0.72rem", fontWeight: "800" }}>
                     {match.label}
                   </span>
-                  <span style={{ fontSize: "0.8rem", color: "#6d28d9", fontWeight: "700" }}>
+                  <span style={{ fontSize: "0.72rem", color: "#6d28d9", fontWeight: "700" }}>
                     🏅 {user.badge}
                   </span>
                 </div>
 
-                <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "12px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
                   <img
                     src={user.photo}
                     alt={user.name}
-                    style={{ width: "68px", height: "68px", borderRadius: "50%", objectFit: "cover", objectPosition: "center top", border: "3px solid #6d28d9" }}
+                    style={{ width: "64px", height: "64px", borderRadius: "50%", objectFit: "cover", objectPosition: "center top", border: "3px solid #6d28d9", flexShrink: 0 }}
                   />
                   <div>
-                    <h3 style={{ margin: 0, color: "#1e1b4b" }}>{user.name}</h3>
-                    <span style={{ fontSize: "0.85rem", color: "#64748b" }}>⭐ {user.rating} • Score: {user.swapScore}</span>
+                    <h3 style={{ margin: 0, color: "#1e1b4b", fontSize: "1.05rem" }}>{user.name}</h3>
+                    <span style={{ fontSize: "0.78rem", color: "#64748b" }}>⭐ {user.rating} • {user.swapScore}</span>
                   </div>
                 </div>
 
-                <p style={{ fontSize: "0.9rem", color: "#475569", marginBottom: "14px" }}>{user.bio}</p>
+                <p style={{ fontSize: "0.86rem", color: "#475569", marginBottom: "12px", lineHeight: "1.4" }}>{user.bio}</p>
 
-                <div style={{ background: "#f5f3ff", padding: "12px", borderRadius: "12px", marginBottom: "16px", fontSize: "0.9rem" }}>
+                <div style={{ background: "#f5f3ff", padding: "9px 10px", borderRadius: "10px", marginBottom: "12px", fontSize: "0.82rem" }}>
                   <div>🎓 <strong>Teaches:</strong> <span style={{ color: "#6d28d9", fontWeight: "800" }}>{user.teaches}</span></div>
-                  <div style={{ marginTop: "4px" }}>📚 <strong>Wants:</strong> {user.wantsToLearn}</div>
+                  <div style={{ marginTop: "3px" }}>📚 <strong>Wants:</strong> {user.wantsToLearn}</div>
                 </div>
 
-                <button className="btn-green" style={{ width: "100%" }} onClick={() => handleRequestSwap(user)}>
+                <button className="btn-green" style={{ width: "100%", padding: "9px 10px", fontSize: "0.85rem" }} onClick={() => handleRequestSwap(user)}>
                   Request Swap ⇄
                 </button>
               </div>
@@ -239,15 +237,16 @@ const modalOverlay = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  zIndex: 999
+zIndex: 999
 };
 const modalBox = {
 background: "#4c1d95",
 border: "3px solid #facc15",
-padding: "40px",
+padding: "36px",
 borderRadius: "22px",
 textAlign: "center",
 color: "#fff",
+margin: "0 16px",
 boxShadow: "0 0 45px rgba(250, 204, 21, 0.55)"
 };
 export default FindMatch;

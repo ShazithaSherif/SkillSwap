@@ -200,19 +200,40 @@ body {
     pointer-events: none;
   }
 }
-/* ===== SLEEK MOBILE & TABLET RESPONSIVE LAYOUT ===== */
+/* Desktop default for nav-top-row & hamburger button */
+.nav-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: var(--violet-soft);
+  color: var(--violet);
+  border: 1.5px solid #ddd6fe;
+  font-size: 1.35rem;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* ===== PRO MOBILE RESPONSIVE STYLES ===== */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 12px 4%;
-    gap: 8px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 5%;
+    gap: 0;
+  }
+
+  .nav-top-row {
+    width: 100%;
   }
 
   .logo {
-    font-size: 1.25rem;
-    gap: 8px;
+    font-size: 1.3rem;
   }
 
   .logo img {
@@ -220,23 +241,64 @@ body {
     height: 34px !important;
   }
 
+  .mobile-menu-btn {
+    display: block;
+  }
+
   .nav-links {
-    width: 100%;
-    justify-content: space-between;
-    gap: 4px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding-top: 14px;
+    margin-top: 12px;
     border-top: 1px solid #ede9fe;
-    padding-top: 8px;
+  }
+
+  .nav-links.open {
+    display: flex;
   }
 
   .nav-link {
-    font-size: 0.82rem;
-    padding: 4px 6px;
+    text-align: left;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    background: var(--violet-soft);
   }
 
   .navbar .btn-green {
-    padding: 6px 12px;
-    font-size: 0.82rem;
-    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+  /* Compact Inner Page Spacing & Cards on Mobile */
+  .match-grid-mobile {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .match-card-mobile {
+    padding: 12px !important;
+    border-radius: 14px !important;
+  }
+
+  .match-card-mobile img {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .match-card-mobile h3 {
+    font-size: 0.95rem !important;
+  }
+
+  .match-card-mobile p {
+    font-size: 0.78rem !important;
+    margin-bottom: 8px !important;
   }
 
   .drop-letter {
