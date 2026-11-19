@@ -71,6 +71,24 @@ body {
   box-shadow: 0 4px 20px rgba(109, 40, 217, 0.08);
 }
 
+.nav-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: var(--violet-soft);
+  color: var(--violet);
+  border: 1.5px solid #ddd6fe;
+  font-size: 1.35rem;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -119,15 +137,6 @@ body {
   color: var(--violet);
 }
 
-/* Clean Certificate Printing (hides Navbar, Footer & buttons when saving PDF) */
-@media print {
-  .navbar, footer, button {
-    display: none !important;
-  }
-  body {
-    background: #ffffff !important;
-  }
-}
 /* ===== FALLING KNOWLEDGE RAIN + SKILLSWAP LETTER DROP LOADER ===== */
 .rain-loader-overlay {
   position: fixed;
@@ -200,23 +209,15 @@ body {
     pointer-events: none;
   }
 }
-/* Desktop default for nav-top-row & hamburger button */
-.nav-top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.mobile-menu-btn {
-  display: none;
-  background: var(--violet-soft);
-  color: var(--violet);
-  border: 1.5px solid #ddd6fe;
-  font-size: 1.35rem;
-  font-weight: 800;
-  padding: 6px 12px;
-  border-radius: 10px;
-  cursor: pointer;
+/* Clean Certificate Printing */
+@media print {
+  .navbar, footer, button {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
 }
 
 /* ===== PRO MOBILE RESPONSIVE STYLES ===== */
@@ -276,7 +277,7 @@ body {
     padding: 10px;
   }
 
-  /* Compact Inner Page Spacing & Cards on Mobile */
+  /* Compact 2-Column Peer Cards on Mobile */
   .match-grid-mobile {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 10px !important;
@@ -299,6 +300,26 @@ body {
   .match-card-mobile p {
     font-size: 0.78rem !important;
     margin-bottom: 8px !important;
+  }
+
+  /* Center Founder Spotlight Card on Mobile */
+  .founder-hero-card {
+    padding: 28px 18px !important;
+    gap: 20px !important;
+    text-align: center !important;
+  }
+
+  .founder-bio-box {
+    text-align: center !important;
+    min-width: 100% !important;
+  }
+
+  .founder-bio-box h1 {
+    font-size: 2rem !important;
+  }
+
+  .founder-social-row {
+    justify-content: center !important;
   }
 
   .drop-letter {

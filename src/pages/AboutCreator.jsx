@@ -21,7 +21,7 @@ function AboutCreator({ setCurrentPage }) {
     "Git & GitHub"
   ];
 
-    const milestones = [
+  const milestones = [
     {
       icon: "🏅",
       title: "6th University Rank & Gold Medalist",
@@ -34,7 +34,7 @@ function AboutCreator({ setCurrentPage }) {
     },
     {
       icon: "👑",
-      title: "Chairperson",
+      title: "Chairperson — Gateway 2026",
       desc: "Coordinated 8 departments for Gateway 2026, our National Level Technical Symposium."
     },
     {
@@ -54,11 +54,11 @@ function AboutCreator({ setCurrentPage }) {
     }
   ];
 
-
   return (
-    <div style={{ padding: "50px 8%", maxWidth: "1100px", margin: "0 auto" }}>
+    <div style={{ padding: "36px 6%", maxWidth: "1100px", margin: "0 auto" }}>
       {/* 1. SUPER FOUNDER SPOTLIGHT CARD */}
       <div
+        className="founder-hero-card"
         style={{
           background: "linear-gradient(135deg, #4c1d95 0%, #6d28d9 60%, #7c3aed 100%)",
           borderRadius: "28px",
@@ -84,7 +84,8 @@ function AboutCreator({ setCurrentPage }) {
               padding: "6px",
               background: "linear-gradient(135deg, #facc15, #fde047, #a78bfa)",
               boxShadow: "0 14px 35px rgba(0, 0, 0, 0.35)",
-              transform: "rotate(-2deg)"
+              transform: "rotate(-2deg)",
+              margin: "0 auto"
             }}
           >
             {!imgError ? (
@@ -136,7 +137,7 @@ function AboutCreator({ setCurrentPage }) {
           </div>
         </div>
         {/* Right: Founder Bio & Direct Links */}
-        <div style={{ flex: 1, minWidth: "280px" }}>
+        <div className="founder-bio-box" style={{ flex: 1, minWidth: "280px" }}>
           <span
             style={{
               background: "rgba(250, 204, 21, 0.18)",
@@ -144,10 +145,11 @@ function AboutCreator({ setCurrentPage }) {
               padding: "6px 14px",
               borderRadius: "20px",
               fontSize: "0.85rem",
-              fontWeight: "700"
+              fontWeight: "700",
+              display: "inline-block"
             }}
           >
-            📍 Salem, Tamil Nadu 
+            📍 Coimbatore, Tamil Nadu • MCA @ PSGCAS
           </span>
 
           <h1 style={{ fontSize: "2.6rem", margin: "12px 0 6px", lineHeight: "1.15" }}>
@@ -157,16 +159,16 @@ function AboutCreator({ setCurrentPage }) {
             Aspiring Full Stack Developer • Gold Medalist • Peer-Learning Builder
           </p>
           <p style={{ color: "#ddd6fe", lineHeight: "1.7", fontSize: "0.98rem", marginBottom: "24px" }}>
-            "I built <strong>SkillSwap</strong> with one belief: knowledge multiplies when shared. Whether you're mastering Python, React, UI Design, or Public Speaking, nobody should be held back by expensive paywalls. Everyone has something valuable to teach—and something exciting to learn."
+            &ldquo;I built <strong>SkillSwap</strong> with one belief: knowledge multiplies when shared. Whether you&apos;re mastering Python, React, UI Design, or Public Speaking, nobody should be held back by expensive paywalls. Everyone has something valuable to teach—and something exciting to learn.&rdquo;
           </p>
 
           {/* Direct Contact & Social Pills */}
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+          <div className="founder-social-row" style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
             <a href="mailto:shazithasherif@gmail.com" style={socialBtnGold}>
               ✉️ shazithasherif@gmail.com
             </a>
             <a
-              href="https://www.linkedin.com/in/shazitha04"
+              href="https://linkedin.com"
               target="_blank"
               rel="noreferrer"
               style={socialBtnGlass}
@@ -174,7 +176,7 @@ function AboutCreator({ setCurrentPage }) {
               💼 LinkedIn
             </a>
             <a
-              href="https://github.com/ShazithaSherif"
+              href="https://github.com"
               target="_blank"
               rel="noreferrer"
               style={socialBtnGlass}
@@ -186,7 +188,7 @@ function AboutCreator({ setCurrentPage }) {
       </div>
 
       {/* 2. WHY I BUILT SKILLSWAP + TECH STACK */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "24px", marginBottom: "40px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", marginBottom: "40px" }}>
         <div style={whiteCard}>
           <h3 style={{ color: "#4c1d95", fontSize: "1.35rem", marginBottom: "12px" }}>
             💡 The Story Behind SkillSwap
@@ -238,7 +240,7 @@ function AboutCreator({ setCurrentPage }) {
           Academic excellence, hackathons, and community leadership
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "20px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
           {milestones.map((item, idx) => (
             <div key={idx} style={{ ...whiteCard, borderTop: "4px solid #facc15" }}>
               <div style={{ fontSize: "2.2rem", marginBottom: "10px" }}>{item.icon}</div>
@@ -261,7 +263,7 @@ function AboutCreator({ setCurrentPage }) {
         }}
       >
         <h3 style={{ color: "#1e1b4b", fontSize: "1.5rem", marginBottom: "8px" }}>
-          🤝 Let's Connect &amp; Collaborate
+          🤝 Let&apos;s Connect &amp; Collaborate
         </h3>
         <p style={{ color: "#64748b", marginBottom: "20px" }}>
           Have feedback on SkillSwap or want to collaborate on a project? Drop a quick note below!
