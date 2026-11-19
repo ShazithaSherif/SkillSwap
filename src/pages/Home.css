@@ -409,89 +409,196 @@
   font-size: 2.1rem;
   margin-bottom: 24px;
 }
-/* ===== HOME PAGE MOBILE RESPONSIVE FIXES ===== */
+/* ===== HOME PAGE PROPORTIONAL MOBILE LAYOUT ===== */
 @media (max-width: 768px) {
+  /* 1. Boom Intro: Keep cards side-by-side & compact */
   .boom-brand {
-    font-size: 2rem;
-    margin-bottom: 18px;
+    font-size: 1.9rem;
+    margin-bottom: 16px;
   }
 
   .boom-stage {
-    flex-direction: column;
-    gap: 14px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+    width: 100%;
   }
 
   .boom-concept-card {
-    width: 210px;
-    padding: 18px 16px;
+    width: 42%;
+    max-width: 155px;
+    padding: 14px 10px;
+    border-radius: 16px;
+    border-width: 3px;
   }
 
   .concept-icon-circle {
-    width: 60px;
-    height: 60px;
-    font-size: 2rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
   }
 
-  /* Gentle mobile swap bounce instead of wide 340px desktop slide */
+  .boom-concept-card h4 {
+    font-size: 0.88rem;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .boom-skill-pill {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+  }
+
+  .boom-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
   .card-left {
-    animation: mobilePopLeft 1.4s ease forwards;
+    animation: mobileSwapLeft 1.4s ease forwards;
   }
 
   .card-right {
-    animation: mobilePopRight 1.4s ease forwards;
+    animation: mobileSwapRight 1.4s ease forwards;
   }
 
   .boom-tagline {
-    font-size: 1rem;
-    padding: 0 20px;
+    font-size: 0.92rem;
+    padding: 0 18px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 18px;
   }
 
+  /* 2. Hero Section: Crisp & Balanced */
   .hero {
-    padding: 45px 6%;
-    text-align: center;
+    padding: 36px 5%;
+    gap: 24px;
+    text-align: left;
+  }
+
+  .hero-left {
+    min-width: 100%;
+  }
+
+  .hero-badge {
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    margin-bottom: 10px;
   }
 
   .hero-left h1 {
-    font-size: 2.1rem;
+    font-size: 1.85rem;
+    line-height: 1.22;
+    margin-bottom: 10px;
+  }
+
+  .hero-left p {
+    font-size: 0.95rem;
+    margin-bottom: 18px;
   }
 
   .hero-buttons {
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 10px;
   }
 
+  .hero-buttons .btn-green,
+  .hero-buttons .btn-outline {
+    padding: 10px 16px;
+    font-size: 0.88rem;
+  }
+
+  /* Keep Hero Swap Cards Side-by-Side (No Tall Vertical Stack!) */
   .hero-right {
-    flex-direction: column;
-    gap: 14px;
+    min-width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
   }
 
   .swap-person-card {
-    width: 100%;
-    max-width: 260px;
+    width: 42%;
+    max-width: 155px;
+    padding: 14px 10px;
+    border-radius: 16px;
+    border-width: 3px;
+  }
+
+  .swap-person-card h4 {
+    font-size: 0.92rem;
+  }
+
+  .skill-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  .middle-swap-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  /* 3. Sections & Cards */
+  .section {
+    padding: 40px 5%;
+  }
+
+  .section-title {
+    font-size: 1.55rem;
+  }
+
+  .section-sub {
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+  }
+
+  .steps-container {
+    flex-direction: column;
+    gap: 16px;
   }
 
   .steps-container::before {
     display: none;
   }
 
-  .section {
-    padding: 45px 6%;
+  .step-box {
+    width: 100%;
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(109, 40, 217, 0.06);
   }
 
-  .quote-banner h2, .final-cta h2 {
-    font-size: 1.45rem;
+  .quote-banner {
+    padding: 34px 5%;
+  }
+
+  .quote-banner h2,
+  .final-cta h2 {
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
+
+  .final-cta {
+    padding: 40px 5%;
   }
 }
 
-@keyframes mobilePopLeft {
-  0% { transform: translateY(-30px) scale(0.85); opacity: 0; }
-  60% { transform: translateY(6px) scale(1.03); opacity: 1; }
-  100% { transform: translateY(0) scale(1); opacity: 1; }
+@keyframes mobileSwapLeft {
+  0% { transform: translateX(-25px) scale(0.9); opacity: 0; }
+  60% { transform: translateX(4px) scale(1.02); opacity: 1; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
 }
 
-@keyframes mobilePopRight {
-  0% { transform: translateY(30px) scale(0.85); opacity: 0; }
-  60% { transform: translateY(-6px) scale(1.03); opacity: 1; }
-  100% { transform: translateY(0) scale(1); opacity: 1; }
+@keyframes mobileSwapRight {
+  0% { transform: translateX(25px) scale(0.9); opacity: 0; }
+  60% { transform: translateX(-4px) scale(1.02); opacity: 1; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
 }
