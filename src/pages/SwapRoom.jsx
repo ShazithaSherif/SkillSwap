@@ -162,7 +162,8 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
             ))}
           </div>
 
-          <div style={{ display: "flex", justifyContent: "center", gap: "14px", flexWrap: "wrap" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", alignItems: "start" }}>
+
             <button className="btn-outline" onClick={() => window.print()}>
               🖨️ Download / Save Certificate (PDF)
             </button>

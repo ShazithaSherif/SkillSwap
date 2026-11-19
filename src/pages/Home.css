@@ -409,3 +409,89 @@
   font-size: 2.1rem;
   margin-bottom: 24px;
 }
+/* ===== HOME PAGE MOBILE RESPONSIVE FIXES ===== */
+@media (max-width: 768px) {
+  .boom-brand {
+    font-size: 2rem;
+    margin-bottom: 18px;
+  }
+
+  .boom-stage {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .boom-concept-card {
+    width: 210px;
+    padding: 18px 16px;
+  }
+
+  .concept-icon-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+
+  /* Gentle mobile swap bounce instead of wide 340px desktop slide */
+  .card-left {
+    animation: mobilePopLeft 1.4s ease forwards;
+  }
+
+  .card-right {
+    animation: mobilePopRight 1.4s ease forwards;
+  }
+
+  .boom-tagline {
+    font-size: 1rem;
+    padding: 0 20px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .hero {
+    padding: 45px 6%;
+    text-align: center;
+  }
+
+  .hero-left h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-right {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .swap-person-card {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .steps-container::before {
+    display: none;
+  }
+
+  .section {
+    padding: 45px 6%;
+  }
+
+  .quote-banner h2, .final-cta h2 {
+    font-size: 1.45rem;
+  }
+}
+
+@keyframes mobilePopLeft {
+  0% { transform: translateY(-30px) scale(0.85); opacity: 0; }
+  60% { transform: translateY(6px) scale(1.03); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes mobilePopRight {
+  0% { transform: translateY(30px) scale(0.85); opacity: 0; }
+  60% { transform: translateY(-6px) scale(1.03); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
