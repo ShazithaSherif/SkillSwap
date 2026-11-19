@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
   const peer = activePeer || { name: "Priya S", teaches: "React", photo: "/priya.jpeg" };
-  const myName = userProfile?.name || "You";
-  const myPhoto = userProfile?.photo || "/arjun.jpeg";
-  const myTeach = userProfile?.teaches || "Python";
+  const myName = userProfile?.name || "Guest Swapper";
+  const myInitial = (myName?.trim()?.charAt(0) || "G").toUpperCase();
+  const defaultInitialBadge = `data:image/svg+xml;utf8,${encodeURIComponent(
+    `<svg xmlns="http://w3.org" viewBox="0 0 120 120"><rect width="120" height="120" rx="60" fill="#6d28d9"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="#facc15" font-family="Segoe UI, sans-serif" font-size="52" font-weight="800">${myInitial}</text></svg>`
+  )}`;
+  const myPhoto = userProfile?.photo || defaultInitialBadge;
+  const myTeach = userProfile?.teaches || (peer.teaches === "Python" ? "React" : "Python");
 
   const [phase, setPhase] = useState("teach");
   const [secondsLeft, setSecondsLeft] = useState(30 * 60);
@@ -86,11 +90,11 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
     });
 
     return (
-      <div style={{ padding: "50px 6%", maxWidth: "760px", margin: "0 auto" }}>
+      <div style={{ padding: "36px 5%", maxWidth: "760px", margin: "0 auto" }}>
         <div
           style={{
             background: "linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%)",
-            padding: "42px 36px",
+            padding: "36px 24px",
             borderRadius: "24px",
             textAlign: "center",
             boxShadow: "0 16px 40px rgba(109, 40, 217, 0.18)",
@@ -102,9 +106,9 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
             style={{
               background: "#facc15",
               color: "#1e1b4b",
-              padding: "6px 18px",
+              padding: "6px 16px",
               borderRadius: "20px",
-              fontSize: "0.82rem",
+              fontSize: "0.78rem",
               fontWeight: "800",
               letterSpacing: "1px"
             }}
@@ -112,10 +116,10 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
             🏅 OFFICIAL PEER EXCHANGE CERTIFICATE
           </span>
 
-          <h1 style={{ color: "#4c1d95", fontSize: "2.1rem", margin: "16px 0 6px" }}>
+          <h1 style={{ color: "#4c1d95", fontSize: "2rem", margin: "16px 0 6px" }}>
             Skill<span style={{ color: "#eab308" }}>Swap</span> Community
           </h1>
-          <p style={{ color: "#64748b", fontSize: "0.95rem", marginBottom: "22px" }}>
+          <p style={{ color: "#64748b", fontSize: "0.92rem", marginBottom: "22px" }}>
             Everyone Can Teach • Everyone Can Learn • Education Is Free
           </p>
 
@@ -123,30 +127,30 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
           <h2
             style={{
               color: "#1e1b4b",
-              fontSize: "2rem",
+              fontSize: "1.85rem",
               margin: "8px 0 16px",
               borderBottom: "2px solid #facc15",
               display: "inline-block",
-              padding: "0 24px 4px"
+              padding: "0 20px 4px"
             }}
           >
             {myName}
           </h2>
 
-          <p style={{ color: "#334155", fontSize: "1.05rem", lineHeight: "1.7", maxWidth: "560px", margin: "0 auto 22px" }}>
+          <p style={{ color: "#334155", fontSize: "1rem", lineHeight: "1.7", maxWidth: "560px", margin: "0 auto 22px" }}>
             Successfully completed a 60-minute peer skill exchange with <strong>{peer.name}</strong> — teaching{" "}
             <strong style={{ color: "#6d28d9" }}>{myTeach}</strong> and learning{" "}
             <strong style={{ color: "#6d28d9" }}>{peer.teaches}</strong> — earning <strong>+25 Swap Coins</strong>.
           </p>
 
-          <div style={{ display: "flex", justifyContent: "space-around", flexWrap: "wrap", gap: "16px", borderTop: "1px solid #ddd6fe", paddingTop: "18px", fontSize: "0.9rem", color: "#475569" }}>
+          <div style={{ display: "flex", justifyContent: "space-around", flexWrap: "wrap", gap: "14px", borderTop: "1px solid #ddd6fe", paddingTop: "18px", fontSize: "0.88rem", color: "#475569" }}>
             <div>📅 <strong>Date:</strong> {today}</div>
             <div>🪙 <strong>Reward:</strong> +25 Swap Coins</div>
             <div>✅ <strong>Verified Peer Swap</strong></div>
           </div>
         </div>
 
-        <div style={{ background: "#fff", padding: "26px", borderRadius: "18px", textAlign: "center", boxShadow: "0 6px 20px rgba(109, 40, 217, 0.08)" }}>
+        <div style={{ background: "#fff", padding: "24px", borderRadius: "18px", textAlign: "center", boxShadow: "0 6px 20px rgba(109, 40, 217, 0.08)" }}>
           <p style={{ color: "#1e1b4b", fontWeight: "700", marginBottom: "10px" }}>
             Rate your session with {peer.name}:
           </p>
@@ -162,28 +166,26 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
             ))}
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", alignItems: "start" }}>
-
+          <div style={{ display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
             <button className="btn-outline" onClick={() => window.print()}>
               🖨️ Download / Save Certificate (PDF)
             </button>
             <button className="btn-green" onClick={() => setCurrentPage("dashboard")}>
-              Submit Rating & View My Swaps →
+              Submit Rating &amp; View My Swaps →
             </button>
           </div>
         </div>
       </div>
     );
   }
-
   return (
-    <div style={{ padding: "32px 6%", maxWidth: "1120px", margin: "0 auto" }}>
-      <div style={{ background: "linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%)", color: "#fff", padding: "20px 26px", borderRadius: "18px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", marginBottom: "24px", boxShadow: "0 8px 24px rgba(109, 40, 217, 0.22)" }}>
+    <div style={{ padding: "24px 5%", maxWidth: "1120px", margin: "0 auto" }}>
+      <div style={{ background: "linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%)", color: "#fff", padding: "18px 20px", borderRadius: "18px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "14px", marginBottom: "22px", boxShadow: "0 8px 24px rgba(109, 40, 217, 0.22)" }}>
         <div>
           <span style={{ background: "#facc15", color: "#1e1b4b", padding: "4px 12px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: "800" }}>
             ● LIVE SWAP STUDIO
           </span>
-          <h2 style={{ marginTop: "6px", fontSize: "1.45rem" }}>
+          <h2 style={{ marginTop: "6px", fontSize: "1.35rem" }}>
             {myTeach} ⇄ {peer.teaches} Exchange
           </h2>
         </div>
@@ -197,11 +199,11 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
           </button>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div style={{ background: "#1e1b4b", padding: "8px 16px", borderRadius: "12px", border: "2px solid #facc15", fontSize: "1.35rem", fontWeight: "800", color: "#facc15" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+          <div style={{ background: "#1e1b4b", padding: "8px 14px", borderRadius: "12px", border: "2px solid #facc15", fontSize: "1.2rem", fontWeight: "800", color: "#facc15", whiteSpace: "nowrap" }}>
             ⏱ {mins}:{secs}
           </div>
-          <button className="btn-green" style={{ padding: "10px 16px" }} onClick={() => setIsRunning(!isRunning)}>
+          <button className="btn-green" style={{ padding: "10px 14px" }} onClick={() => setIsRunning(!isRunning)}>
             {isRunning ? "⏸ Pause" : "▶ Start"}
           </button>
           <button
@@ -213,32 +215,31 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", gap: "24px", alignItems: "start" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "22px", alignItems: "start" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          <div style={{ background: "#1e1b4b", padding: "24px", borderRadius: "20px", color: "#fff", boxShadow: "0 8px 24px rgba(30, 27, 75, 0.2)" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "20px" }}>
+          <div style={{ background: "#1e1b4b", padding: "20px", borderRadius: "20px", color: "#fff", boxShadow: "0 8px 24px rgba(30, 27, 75, 0.2)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "18px" }}>
               <div style={{ ...videoTile, border: phase === "teach" ? "3px solid #facc15" : "2px solid #4c1d95" }}>
                 {phase === "teach" && <span style={spotlightTag}>🎤 Teaching</span>}
                 <img src={myPhoto} alt={myName} style={avatarStyle} />
-                <strong style={{ fontSize: "1rem" }}>{myName} (You)</strong>
-                <span style={{ fontSize: "0.8rem", color: "#ddd6fe", marginTop: "2px" }}>{myTeach}</span>
+                <strong style={{ fontSize: "0.95rem" }}>{myName}</strong>
+                <span style={{ fontSize: "0.78rem", color: "#ddd6fe", marginTop: "2px" }}>{myTeach}</span>
               </div>
 
               <div style={{ ...videoTile, border: phase === "learn" ? "3px solid #facc15" : "2px solid #4c1d95" }}>
                 {phase === "learn" && <span style={spotlightTag}>🎤 Teaching</span>}
                 <img src={peer.photo} alt={peer.name} style={avatarStyle} />
-                <strong style={{ fontSize: "1rem" }}>{peer.name}</strong>
-                <span style={{ fontSize: "0.8rem", color: "#ddd6fe", marginTop: "2px" }}>{peer.teaches}</span>
+                <strong style={{ fontSize: "0.95rem" }}>{peer.name}</strong>
+                <span style={{ fontSize: "0.78rem", color: "#ddd6fe", marginTop: "2px" }}>{peer.teaches}</span>
               </div>
             </div>
-
             {screenSharing && (
-              <div style={{ background: "#312e81", border: "2px dashed #facc15", padding: "12px", borderRadius: "12px", textAlign: "center", marginBottom: "18px", fontSize: "0.88rem", color: "#fef08a" }}>
+              <div style={{ background: "#312e81", border: "2px dashed #facc15", padding: "12px", borderRadius: "12px", textAlign: "center", marginBottom: "16px", fontSize: "0.86rem", color: "#fef08a" }}>
                 🖥️ Screen Sharing Active — Presenting {phase === "teach" ? myTeach : peer.teaches}
               </div>
             )}
 
-            <div style={{ display: "flex", justifyContent: "center", gap: "10px", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", justifyContent: "center", gap: "8px", flexWrap: "wrap" }}>
               <button onClick={() => setMicOn(!micOn)} style={micOn ? dockBtn : dockBtnOff}>
                 {micOn ? "🎙️ Mic" : "🔇 Muted"}
               </button>
@@ -257,8 +258,8 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
             </div>
           </div>
 
-          <div style={{ background: "#fff", padding: "22px", borderRadius: "18px", boxShadow: "0 6px 20px rgba(109, 40, 217, 0.08)" }}>
-            <h3 style={{ marginBottom: "14px", color: "#1e1b4b", fontSize: "1.1rem" }}>🎯 Live Session Roadmap</h3>
+          <div style={{ background: "#fff", padding: "20px", borderRadius: "18px", boxShadow: "0 6px 20px rgba(109, 40, 217, 0.08)" }}>
+            <h3 style={{ marginBottom: "14px", color: "#1e1b4b", fontSize: "1.08rem" }}>🎯 Live Session Roadmap</h3>
             {tasks.map((task) => (
               <div
                 key={task.id}
@@ -266,14 +267,14 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
                 style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px 12px", borderRadius: "10px", background: task.done ? "#f5f3ff" : "#fff", cursor: "pointer", marginBottom: "8px", border: "1px solid #ede9fe" }}
               >
                 <span>{task.done ? "✅" : "⬜"}</span>
-                <span style={{ textDecoration: task.done ? "line-through" : "none", color: task.done ? "#6d28d9" : "#1e1b4b", fontWeight: "600", fontSize: "0.92rem" }}>
+                <span style={{ textDecoration: task.done ? "line-through" : "none", color: task.done ? "#6d28d9" : "#1e1b4b", fontWeight: "600", fontSize: "0.9rem" }}>
                   {task.text}
                 </span>
               </div>
             ))}
           </div>
         </div>
-          <div style={{ background: "#fff", padding: "24px", borderRadius: "20px", boxShadow: "0 6px 20px rgba(109, 40, 217, 0.08)", display: "flex", flexDirection: "column", minHeight: "480px" }}>
+        <div style={{ background: "#fff", padding: "20px", borderRadius: "20px", boxShadow: "0 6px 20px rgba(109, 40, 217, 0.08)", display: "flex", flexDirection: "column", minHeight: "440px" }}>
           <div style={{ display: "flex", gap: "10px", marginBottom: "16px" }}>
             <button onClick={() => setActiveTab("chat")} style={activeTab === "chat" ? tabActive : tabInactive}>
               💬 Live Peer Chat
@@ -285,7 +286,7 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
 
           {activeTab === "chat" ? (
             <>
-              <div style={{ flex: 1, maxHeight: "340px", overflowY: "auto", background: "#f5f3ff", padding: "16px", borderRadius: "14px", display: "flex", flexDirection: "column", gap: "12px", marginBottom: "14px" }}>
+              <div style={{ flex: 1, maxHeight: "320px", overflowY: "auto", background: "#f5f3ff", padding: "14px", borderRadius: "14px", display: "flex", flexDirection: "column", gap: "12px", marginBottom: "14px" }}>
                 {messages.map((msg, i) => (
                   <div
                     key={i}
@@ -295,25 +296,25 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
                       color: msg.sender === "You" ? "#fff" : "#1e1b4b",
                       padding: "10px 14px",
                       borderRadius: "14px",
-                      maxWidth: "80%",
+                      maxWidth: "82%",
                       boxShadow: "0 2px 8px rgba(0,0,0,0.06)"
                     }}
                   >
                     <div style={{ fontSize: "0.75rem", fontWeight: "800", opacity: 0.85, marginBottom: "3px" }}>{msg.sender}</div>
-                    <div style={{ fontSize: "0.94rem" }}>{msg.text}</div>
+                    <div style={{ fontSize: "0.92rem" }}>{msg.text}</div>
                   </div>
                 ))}
               </div>
 
-              <form onSubmit={handleSendChat} style={{ display: "flex", gap: "10px" }}>
+              <form onSubmit={handleSendChat} style={{ display: "flex", gap: "8px" }}>
                 <input
                   type="text"
-                  placeholder="Type a message or paste a resource link..."
+                  placeholder="Type a message..."
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
-                  style={{ flex: 1, padding: "12px", borderRadius: "10px", border: "1.5px solid #ddd6fe", outline: "none", fontSize: "0.95rem" }}
+                  style={{ flex: 1, padding: "11px", borderRadius: "10px", border: "1.5px solid #ddd6fe", outline: "none", fontSize: "0.92rem" }}
                 />
-                <button type="submit" className="btn-green" style={{ padding: "12px 20px" }}>
+                <button type="submit" className="btn-green" style={{ padding: "11px 18px" }}>
                   Send
                 </button>
               </form>
@@ -322,7 +323,7 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
             <textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              style={{ width: "100%", flex: 1, minHeight: "380px", padding: "16px", borderRadius: "12px", border: "1.5px solid #ddd6fe", fontFamily: "monospace", fontSize: "0.95rem", outline: "none", resize: "none" }}
+              style={{ width: "100%", flex: 1, minHeight: "350px", padding: "14px", borderRadius: "12px", border: "1.5px solid #ddd6fe", fontFamily: "monospace", fontSize: "0.92rem", outline: "none", resize: "none" }}
             />
           )}
         </div>
@@ -334,7 +335,7 @@ function SwapRoom({ userProfile, setUserProfile, activePeer, setCurrentPage }) {
 const videoTile = {
   background: "#312e81",
   borderRadius: "16px",
-  padding: "24px 12px 18px",
+  padding: "22px 10px 16px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -347,15 +348,15 @@ const spotlightTag = {
   top: "10px",
   background: "#facc15",
   color: "#1e1b4b",
-  fontSize: "0.72rem",
+  fontSize: "0.7rem",
   fontWeight: "800",
-  padding: "3px 10px",
+  padding: "3px 9px",
   borderRadius: "10px"
 };
 
 const avatarStyle = {
-  width: "80px",
-  height: "80px",
+  width: "72px",
+  height: "72px",
   borderRadius: "50%",
   objectFit: "cover",
   objectPosition: "center top",
@@ -368,9 +369,10 @@ const dockBtn = {
   background: "#312e81",
   color: "#fff",
   border: "1px solid #6d28d9",
-  padding: "10px 14px",
+  padding: "9px 12px",
   borderRadius: "10px",
   fontWeight: "700",
+  fontSize: "0.85rem",
   cursor: "pointer"
 };
 
@@ -378,9 +380,10 @@ const dockBtnOff = {
   background: "#991b1b",
   color: "#fff",
   border: "none",
-  padding: "10px 14px",
+  padding: "9px 12px",
   borderRadius: "10px",
   fontWeight: "700",
+  fontSize: "0.85rem",
   cursor: "pointer"
 };
 
@@ -388,9 +391,10 @@ const dockBtnActive = {
   background: "#6d28d9",
   color: "#facc15",
   border: "1px solid #facc15",
-  padding: "10px 14px",
+  padding: "9px 12px",
   borderRadius: "10px",
   fontWeight: "700",
+  fontSize: "0.85rem",
   cursor: "pointer"
 };
 
@@ -398,22 +402,22 @@ const roleActive = {
   background: "#facc15",
   color: "#1e1b4b",
   border: "none",
-  padding: "8px 14px",
+  padding: "8px 12px",
   borderRadius: "9px",
   fontWeight: "800",
   cursor: "pointer",
-  fontSize: "0.85rem"
+  fontSize: "0.82rem"
 };
 
 const roleInactive = {
   background: "transparent",
   color: "#ede9fe",
   border: "none",
-  padding: "8px 14px",
+  padding: "8px 12px",
   borderRadius: "9px",
   fontWeight: "600",
   cursor: "pointer",
-  fontSize: "0.85rem"
+  fontSize: "0.82rem"
 };
 
 const tabActive = {
@@ -439,4 +443,3 @@ const tabInactive = {
 };
 
 export default SwapRoom;
-
