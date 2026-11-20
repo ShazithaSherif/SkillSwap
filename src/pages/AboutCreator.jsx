@@ -168,7 +168,7 @@ function AboutCreator({ setCurrentPage }) {
               ✉️ shazithasherif@gmail.com
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/shazitha04 "
               target="_blank"
               rel="noreferrer"
               style={socialBtnGlass}
@@ -176,7 +176,7 @@ function AboutCreator({ setCurrentPage }) {
               💼 LinkedIn
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/ShazithaSherif "
               target="_blank"
               rel="noreferrer"
               style={socialBtnGlass}
