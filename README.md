@@ -48,5 +48,5 @@ ________________________________________________________________________________
 
 Shazitha Sherif
 - Email: shazithasherif@gmail.com
-- LinkedIn: https://linkedin.com
-- GitHub: https://github.com
+- LinkedIn:https://linkedin.com/in/shazitha04 
+- GitHub:https://github.com/ShazithaSherif 
