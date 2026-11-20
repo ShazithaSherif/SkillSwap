@@ -1,16 +1,52 @@
-# React + Vite
+# SkillSwap
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive peer-to-peer skill-exchange web application built with React and Vite. SkillSwap enables learners to match based on complementary skills, collaborate inside a structured 60-minute virtual classroom, and track learning milestones without backend friction.
 
-Currently, two official plugins are available:
+Live Application: https://netlify.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+___________________________________________________________________________________________________________________________________________________________________
 
-## React Compiler
+## Core Architecture & Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Bidirectional Skill Matching Engine: Evaluates mutual compatibility between user-offered and requested skills (supporting both preset categories and custom user-entered skills via HTML5 datalist), dynamically scoring and filtering peers.
+- Interactive Swap Studio: Simulates a two-phase 60-minute learning session (30 minutes teaching / 30 minutes learning) complete with a countdown timer, role-switching spotlight, interactive session roadmap, real-time chat simulation, and a shared scratchpad.
+- Client-Side State & Gamification: Persists user profiles, custom SVG initials avatars, Swap Coin balances, and completed session counts in localStorage with tier progression (Beginner, Pro, Master Swapper).
+- Print-Ready Credential Generation: Dynamically renders a verifiable session completion certificate styled with print media rules for clean browser-to-PDF export.
+- Responsive UI & Custom Motion: Built with pure CSS3 keyframe animations, responsive CSS Grid and Flexbox layouts, and a collapsible mobile navigation drawer.
 
-## Expanding the ESLint configuration
+___________________________________________________________________________________________________________________________________________________________________
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+- Frontend Framework: React, Vite
+- Languages: JavaScript (ES6+), HTML5
+- Styling: CSS3 (Custom Properties, Keyframe Animations, Media Queries)
+- State & Persistence: React Hooks (useState, useEffect), Web Storage API (localStorage)
+- CI/CD & Deployment: GitHub, Netlify
+
+___________________________________________________________________________________________________________________________________________________________________
+
+## Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com
+
+# Navigate into the project directory
+cd SkillSwap
+
+# Install dependencies
+npm install
+
+# Start the Vite development server
+npm run dev
+```
+
+___________________________________________________________________________________________________________________________________________________________________
+
+## Author
+
+Shazitha Sherif
+- Email: shazithasherif@gmail.com
+- LinkedIn: https://linkedin.com
+- GitHub: https://github.com
